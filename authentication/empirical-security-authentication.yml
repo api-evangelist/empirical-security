@@ -1,0 +1,26 @@
+generated: '2026-07-19'
+method: searched
+source: openapi/empirical-security-openapi.yml
+docs: https://docs.empiricalsecurity.com/authentication
+notes: >-
+  OAuth 2.0 client credentials via FusionAuth. Create an API Client under
+  Settings -> API Clients in https://app.empiricalsecurity.com/, then POST
+  to the FusionAuth token endpoint with HTTP Basic (client_id:client_secret),
+  grant_type=client_credentials and the target-entity scope. The returned JWT
+  (valid one hour) is sent as Authorization: Bearer <JWT> on API requests.
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://empiricalsecurity.fusionauth.io/oauth2/token
+    scopes: 1
+  description: OAuth 2.0 client credentials flow via FusionAuth. Exchange client ID/secret (HTTP
+    Basic) for a one-hour JWT access token, then send it as a Bearer token.
+  sources:
+  - openapi/empirical-security-openapi.yml
