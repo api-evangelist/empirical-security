@@ -1,0 +1,120 @@
+openapi: 3.1.0
+info:
+  title: Empirical Security CVE Groups Search API
+  version: '1.0'
+  description: The Empirical Security API provides programmatic access to real-time exploitation prediction scores for CVEs. It exposes the Foundation (global) model, hourly-updated EPSS models (epss_v3/epss_v4/epss_v5), and organization-specific Radiant models, along with CVE detail, malware-hash, critical-indicator, score-history, change-history, and saved CVE-group endpoints. Authentication is OAuth 2.0 client credentials (JWT bearer).
+  contact:
+    name: Empirical Security
+    url: https://docs.empiricalsecurity.com/
+  x-provenance:
+    generated: '2026-07-19'
+    method: generated
+    source: https://docs.empiricalsecurity.com/api_reference/cves, https://docs.empiricalsecurity.com/api_reference/search, https://docs.empiricalsecurity.com/api_reference/cve_groups, https://docs.empiricalsecurity.com/authentication, https://docs.empiricalsecurity.com/errors
+servers:
+- url: https://app.empiricalsecurity.com/api
+  description: Production
+security:
+- oauth2: []
+tags:
+- name: Search
+  description: Query CVEs using Empirical search syntax.
+paths:
+  /search:
+    get:
+      operationId: searchCves
+      summary: Search CVEs
+      description: Query CVEs using Empirical search syntax and an optional scoring model.
+      tags:
+      - Search
+      parameters:
+      - name: q
+        in: query
+        required: false
+        description: Query using Empirical search syntax (e.g. score:>90).
+        schema:
+          type: string
+      - name: scoring_model
+        in: query
+        required: false
+        description: Scoring/model key (e.g. epss_v5, global).
+        schema:
+          type: string
+      - name: accept
+        in: query
+        required: false
+        description: Set to application/jsonl for JSON Lines output.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Array of matching CVEs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cve'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    Unauthorized:
+      description: Authentication failed (missing or invalid token).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Score:
+      type: object
+      properties:
+        score:
+          type: number
+        percentile:
+          type: number
+        computed_at:
+          type: string
+          format: date-time
+    Cve:
+      type: object
+      properties:
+        identifier:
+          type: string
+          example: CVE-2023-49103
+        description:
+          type: string
+        cvss:
+          type: array
+          items:
+            type: object
+        references:
+          type: array
+          items:
+            type: object
+        has_exploitation_activity:
+          type: boolean
+        scores:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Score'
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: String identifier for the error type.
+            message:
+              type: string
+              description: Human-readable description of the error.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 client credentials flow via FusionAuth. Exchange client ID/secret (HTTP Basic) for a one-hour JWT access token, then send it as a Bearer token.
+      flows:
+        clientCredentials:
+          tokenUrl: https://empiricalsecurity.fusionauth.io/oauth2/token
+          scopes:
+            target-entity:0c6d5dcc-8bf0-4cd1-bd65-066ef0422369: Access to the Empirical Security tenant/entity's CVE data.
