@@ -1,0 +1,40 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.empiricalsecurity.com/errors
+format: custom-json
+envelope:
+  field: error
+  shape: '{ "error": { "code": "string", "message": "string" } }'
+  fields:
+    - name: error.code
+      description: String identifier that indicates the specific type of error.
+    - name: error.message
+      description: Human-readable message providing details about the error.
+notes: >-
+  The Empirical Security API does NOT use RFC 9457 problem+json. Errors are
+  returned in a custom envelope with an error.code and error.message. 2xx
+  indicates success, 4xx indicates client errors, 5xx indicates server errors.
+problems:
+  - status: 401
+    code: invalid_token
+    title: Invalid token
+    description: The supplied bearer token was rejected.
+    remediation: Re-run the client-credentials exchange to obtain a fresh JWT.
+  - status: 401
+    code: missing_token
+    title: Missing token
+    description: No Authorization bearer token was supplied.
+    remediation: 'Send Authorization: Bearer <JWT> on the request.'
+  - status: 404
+    code: not_found
+    title: Not found
+    description: The requested resource (e.g. CVE identifier) does not exist.
+  - status: 400
+    code: parameter_missing
+    title: Parameter missing
+    description: A required parameter was not supplied.
+    remediation: Supply the required query/path parameter (e.g. scoring_model).
+  - status: 500
+    code: internal_server_error
+    title: Internal server error
+    description: An error occurred on the Empirical Security servers.

@@ -1,0 +1,42 @@
+generated: '2026-07-19'
+method: searched
+source:
+  - https://docs.empiricalsecurity.com/
+  - https://docs.empiricalsecurity.com/authentication
+  - https://docs.empiricalsecurity.com/search_syntax
+  - https://docs.empiricalsecurity.com/errors
+  - openapi/empirical-security-openapi.yml
+authentication:
+  style: oauth2-client-credentials
+  header: 'Authorization: Bearer <JWT>'
+  token_url: https://empiricalsecurity.fusionauth.io/oauth2/token
+  token_ttl: 3600
+  ref: authentication/empirical-security-authentication.yml
+idempotency:
+  supported: false
+  notes: >-
+    The public API surface is entirely read-only (all documented operations
+    are GET). No idempotency-key header is documented or required.
+pagination:
+  style: query-search
+  notes: >-
+    Result sets are driven by the /search endpoint and saved cve_groups using
+    Empirical search syntax (e.g. score:>90). Bulk retrieval is via
+    /cves/all which redirects (302) to a gzipped JSONL export.
+content_negotiation:
+  json_lines: >-
+    Endpoints accept an accept=application/jsonl query parameter to stream
+    results as JSON Lines instead of a JSON array.
+versioning:
+  scheme: model-key
+  notes: >-
+    Scoring models are versioned by a permanent key (global, epss_v3,
+    epss_v4, epss_v5) selected via the scoring_model parameter rather than
+    URL/media-type API versioning.
+error_envelope:
+  shape: '{ "error": { "code": "string", "message": "string" } }'
+  format: custom-json
+  ref: errors/empirical-security-problem-types.yml
+rate_limiting:
+  documented: false
+  notes: No published rate-limit signaling was found in the docs.

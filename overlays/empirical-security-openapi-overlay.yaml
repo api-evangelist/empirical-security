@@ -1,0 +1,21 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Empirical Security
+  version: 1.0.0
+extends: openapi/empirical-security-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provenance:
+        method: generated
+        source: https://docs.empiricalsecurity.com/
+      x-apievangelist-artifacts:
+        authentication: authentication/empirical-security-authentication.yml
+        scopes: scopes/empirical-security-scopes.yml
+        errors: errors/empirical-security-problem-types.yml
+        conventions: conventions/empirical-security-conventions.yml
+        conformance: conformance/empirical-security-conformance.yml
+        data_model: data-model/empirical-security-data-model.yml
+  - target: $.info
+    update:
+      x-agentic-access: agentic-access/empirical-security-agentic-access.yml

@@ -1,0 +1,25 @@
+generated: '2026-07-19'
+method: searched
+notes: >-
+  Probed the API host, marketing host and the FusionAuth authorization server
+  for the standard /.well-known/ discovery surface. Only the FusionAuth
+  OpenID Connect discovery document was present. No security.txt, api-catalog
+  or ai-plugin.json were published on any host.
+hosts:
+  - host: https://empiricalsecurity.fusionauth.io
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 200
+        file: empirical-security-openid-configuration.json
+  - host: https://app.empiricalsecurity.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+  - host: https://www.empiricalsecurity.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404

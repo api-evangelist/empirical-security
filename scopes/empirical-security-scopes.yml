@@ -1,0 +1,19 @@
+generated: '2026-07-19'
+method: searched
+source: openapi/empirical-security-openapi.yml
+docs: https://docs.empiricalsecurity.com/authentication
+schemes:
+- name: oauth2
+  source: openapi/empirical-security-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://empiricalsecurity.fusionauth.io/oauth2/token
+  description: OAuth 2.0 client credentials flow via FusionAuth. Exchange client ID/secret (HTTP
+    Basic) for a one-hour JWT access token, then send it as a Bearer token.
+scopes:
+- scope: target-entity:0c6d5dcc-8bf0-4cd1-bd65-066ef0422369
+  description: Access to the Empirical Security tenant/entity's CVE data.
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/empirical-security-openapi.yml

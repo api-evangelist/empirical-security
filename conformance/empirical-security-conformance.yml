@@ -1,0 +1,27 @@
+generated: '2026-07-19'
+method: derived
+source:
+  - openapi/empirical-security-openapi.yml
+  - https://docs.empiricalsecurity.com/authentication
+  - well-known/empirical-security-openid-configuration.json
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: openapi securityScheme type oauth2 (clientCredentials flow)
+  - id: oidc
+    conforms: true
+    evidence: FusionAuth /.well-known/openid-configuration served (200)
+  - id: jwt
+    conforms: true
+    evidence: access tokens are JWTs with exp claim (docs authentication)
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: 'errors use a custom error/code/message envelope, not problem+json'
+  - id: json-api
+    conforms: false
+  - id: fhir
+    conforms: false
+  - id: scim
+    conforms: false
+  - id: fapi
+    conforms: false

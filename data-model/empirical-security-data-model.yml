@@ -1,0 +1,39 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/empirical-security-openapi.yml
+entities:
+  - name: Cve
+    id_field: identifier
+    id_format: CVE-YYYY-NNNNN
+    description: A vulnerability record with CVSS/EPSS/Foundation scores and exploitation activity.
+    fields: [identifier, description, cvss, references, has_exploitation_activity, scores]
+  - name: Score
+    description: A single model score (score, percentile, computed_at) keyed by scoring_model.
+    fields: [score, percentile, computed_at]
+  - name: MalwareHash
+    description: Malware sample hashes associated with a CVE.
+    fields: [md5, sha1, sha256]
+  - name: ScoreHistory
+    description: Time-series of scores for a CVE under a scoring model.
+    fields: [identifier, scores]
+  - name: CveGroup
+    id_field: id
+    description: A saved named query over CVEs.
+    fields: [name, id, url, query_string]
+relationships:
+  - from: Cve
+    to: Score
+    type: has_many
+    via: scores
+  - from: Cve
+    to: MalwareHash
+    type: has_many
+    via: malware
+  - from: ScoreHistory
+    to: Cve
+    type: belongs_to
+    via: identifier
+  - from: CveGroup
+    to: Cve
+    type: has_many
+    via: query_string

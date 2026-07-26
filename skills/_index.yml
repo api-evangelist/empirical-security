@@ -1,0 +1,12 @@
+generated: '2026-07-19'
+method: generated
+source: openapi/empirical-security-openapi.yml
+skills:
+  - file: empirical-security-prioritize-cves.md
+    name: Prioritize CVEs by exploitation probability
+    api: openapi/empirical-security-openapi.yml
+    operations: [searchCves, getCve, getCveScoreHistory]
+  - file: empirical-security-monitor-cve-group.md
+    name: Monitor a saved CVE group
+    api: openapi/empirical-security-openapi.yml
+    operations: [listCveGroups, getCveGroup, getCveMalware, getCveCriticalIndicators]

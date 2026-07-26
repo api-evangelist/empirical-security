@@ -1,0 +1,41 @@
+# Empirical Security
+
+> Empirical Security builds data-driven models that predict which vulnerabilities will be exploited, so security teams can prioritize remediation. It operates the Foundation (global) exploitation-probability model, hourly-updated EPSS models (epss_v3/epss_v4/epss_v5), and organization-specific Radiant models. The API exposes CVE detail, scores, malware hashes, critical indicators, score history and saved CVE groups over a read-only REST surface secured with OAuth 2.0 client credentials.
+
+## APIs
+
+- [Empirical Security API](https://app.empiricalsecurity.com/api): Read-only REST API for CVE scores and detail.
+
+## Docs
+
+- [Documentation home](https://docs.empiricalsecurity.com/)
+- [Authentication](https://docs.empiricalsecurity.com/authentication): OAuth 2.0 client-credentials via FusionAuth (JWT bearer).
+- [CVEs reference](https://docs.empiricalsecurity.com/api_reference/cves)
+- [Search reference](https://docs.empiricalsecurity.com/api_reference/search)
+- [CVE Groups reference](https://docs.empiricalsecurity.com/api_reference/cve_groups)
+- [Search syntax](https://docs.empiricalsecurity.com/search_syntax)
+- [Errors](https://docs.empiricalsecurity.com/errors)
+- [Foundation model](https://docs.empiricalsecurity.com/models/foundation)
+- [EPSS model](https://docs.empiricalsecurity.com/models/epss)
+
+## Specs
+
+- [OpenAPI (API Evangelist generated)](https://raw.githubusercontent.com/api-evangelist/empirical-security/refs/heads/main/openapi/empirical-security-openapi.yml)
+
+## Endpoints
+
+- GET /cves/{cve_id} — retrieve a CVE
+- GET /cves/{cve_id}/malware — malware hashes for a CVE
+- GET /cves/{cve_id}/critical_indicators — critical indicators
+- GET /cves/{cve_id}/score_history?scoring_model= — score history
+- GET /cves/{cve_id}/history — CVE change history
+- GET /cves/all — full dataset export (JSONL)
+- GET /search?q=&scoring_model= — search CVEs
+- GET /cve_groups — list saved CVE groups
+- GET /cve_groups/{id} — execute a saved CVE group
+
+## More
+
+- [Research](https://research.empiricalsecurity.com/)
+- [Company site](https://www.empiricalsecurity.com)
+- [Login / app](https://app.empiricalsecurity.com/)

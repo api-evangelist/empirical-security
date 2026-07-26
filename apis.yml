@@ -1,22 +1,149 @@
 aid: empirical-security
 name: Empirical Security
-description: 'Empirical Security is a company surfaced as a portfolio company of costanoa-ventures and
-  added to the API Evangelist network as a stub for enrichment. Sector: security. This profile is a lead
-  awaiting the enrichment pipeline.'
+description: >-
+  Empirical Security builds data-driven models that predict which
+  vulnerabilities will actually be exploited, so security teams can
+  prioritize remediation by real-world risk instead of raw CVSS severity.
+  It operates the Foundation (global) model, which combines real-time
+  internet exploitation telemetry with EPSS and monitors 18,000+ exploited
+  CVEs; hourly-updated EPSS models (epss_v3, epss_v4, epss_v5); and Radiant,
+  an organization-specific model that layers your local assets,
+  configurations and internal telemetry on top of the Foundation data. The
+  read-only REST API exposes CVE detail, per-model scores and percentiles,
+  malware hashes, critical indicators, score history, change history, full
+  dataset export, search, and saved CVE groups, secured with OAuth 2.0
+  client credentials (JWT bearer). Empirical Security is backed by Costanoa
+  Ventures.
 url: https://raw.githubusercontent.com/api-evangelist/empirical-security/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - costanoa-ventures
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: enrichment-pipeline
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.empiricalsecurity.com/favicon.ico
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
 - Security
-apis: []
+- Cybersecurity
+- Vulnerability Management
+- Vulnerability Prioritization
+- CVE
+- EPSS
+- Exploit Prediction
+- Threat Intelligence
+apis:
+- aid: empirical-security:empirical-security-cve-groups-api
+  name: Empirical Security CVE Groups API
+  description: Saved CVE queries and their execution.
+  humanURL: https://docs.empiricalsecurity.com/
+  baseURL: https://app.empiricalsecurity.com/api
+  tags:
+  - CVE Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/empirical-security-cve-groups-api-openapi.yml
+  - type: Documentation
+    url: https://docs.empiricalsecurity.com/
+  - type: APIReference
+    url: https://docs.empiricalsecurity.com/api_reference/cves
+  - type: Authentication
+    url: authentication/empirical-security-authentication.yml
+  - type: OAuthScopes
+    url: scopes/empirical-security-scopes.yml
+  - type: ErrorCatalog
+    url: errors/empirical-security-problem-types.yml
+  - type: Conventions
+    url: conventions/empirical-security-conventions.yml
+  - type: Lifecycle
+    url: lifecycle/empirical-security-lifecycle.yml
+  - type: Conformance
+    url: conformance/empirical-security-conformance.yml
+  - type: DataModel
+    url: data-model/empirical-security-data-model.yml
+  - type: AgenticAccess
+    url: agentic-access/empirical-security-agentic-access.yml
+  - type: LLMsTxt
+    url: llms/empirical-security-llms.txt
+- aid: empirical-security:empirical-security-cves-api
+  name: Empirical Security CVEs API
+  description: Retrieve CVE detail, scores, malware hashes and history.
+  humanURL: https://docs.empiricalsecurity.com/
+  baseURL: https://app.empiricalsecurity.com/api
+  tags:
+  - CVEs
+  properties:
+  - type: OpenAPI
+    url: openapi/empirical-security-cves-api-openapi.yml
+  - type: Documentation
+    url: https://docs.empiricalsecurity.com/
+  - type: APIReference
+    url: https://docs.empiricalsecurity.com/api_reference/cves
+  - type: Authentication
+    url: authentication/empirical-security-authentication.yml
+  - type: OAuthScopes
+    url: scopes/empirical-security-scopes.yml
+  - type: ErrorCatalog
+    url: errors/empirical-security-problem-types.yml
+  - type: Conventions
+    url: conventions/empirical-security-conventions.yml
+  - type: Lifecycle
+    url: lifecycle/empirical-security-lifecycle.yml
+  - type: Conformance
+    url: conformance/empirical-security-conformance.yml
+  - type: DataModel
+    url: data-model/empirical-security-data-model.yml
+  - type: AgenticAccess
+    url: agentic-access/empirical-security-agentic-access.yml
+  - type: LLMsTxt
+    url: llms/empirical-security-llms.txt
+- aid: empirical-security:empirical-security-search-api
+  name: Empirical Security Search API
+  description: Query CVEs using Empirical search syntax.
+  humanURL: https://docs.empiricalsecurity.com/
+  baseURL: https://app.empiricalsecurity.com/api
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/empirical-security-search-api-openapi.yml
+  - type: Documentation
+    url: https://docs.empiricalsecurity.com/
+  - type: APIReference
+    url: https://docs.empiricalsecurity.com/api_reference/cves
+  - type: Authentication
+    url: authentication/empirical-security-authentication.yml
+  - type: OAuthScopes
+    url: scopes/empirical-security-scopes.yml
+  - type: ErrorCatalog
+    url: errors/empirical-security-problem-types.yml
+  - type: Conventions
+    url: conventions/empirical-security-conventions.yml
+  - type: Lifecycle
+    url: lifecycle/empirical-security-lifecycle.yml
+  - type: Conformance
+    url: conformance/empirical-security-conformance.yml
+  - type: DataModel
+    url: data-model/empirical-security-data-model.yml
+  - type: AgenticAccess
+    url: agentic-access/empirical-security-agentic-access.yml
+  - type: LLMsTxt
+    url: llms/empirical-security-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -25,3 +152,52 @@ maintainers:
 common:
 - type: Website
   url: https://www.empiricalsecurity.com
+- type: DeveloperPortal
+  url: https://docs.empiricalsecurity.com/
+- type: Documentation
+  url: https://docs.empiricalsecurity.com/
+- type: APIReference
+  url: https://docs.empiricalsecurity.com/api_reference/cves
+- type: GettingStarted
+  url: https://docs.empiricalsecurity.com/authentication
+- type: Blog
+  url: https://research.empiricalsecurity.com/
+- type: SignUp
+  url: https://www.empiricalsecurity.com/contact
+- type: Login
+  url: https://app.empiricalsecurity.com/
+- type: TermsOfService
+  url: https://www.empiricalsecurity.com/terms-conditions
+- type: PrivacyPolicy
+  url: https://www.empiricalsecurity.com/privacy-policy
+- type: Authentication
+  url: authentication/empirical-security-authentication.yml
+- type: OAuthScopes
+  url: scopes/empirical-security-scopes.yml
+- type: ErrorCatalog
+  url: errors/empirical-security-problem-types.yml
+- type: Conventions
+  url: conventions/empirical-security-conventions.yml
+- type: Lifecycle
+  url: lifecycle/empirical-security-lifecycle.yml
+- type: Conformance
+  url: conformance/empirical-security-conformance.yml
+- type: DataModel
+  url: data-model/empirical-security-data-model.yml
+- type: WellKnown
+  url: well-known/empirical-security-well-known.yml
+- type: MCPServer
+  url: mcp/empirical-security-mcp.yml
+- type: AgenticAccess
+  url: agentic-access/empirical-security-agentic-access.yml
+- type: LLMsTxt
+  url: llms/empirical-security-llms.txt
+- type: DomainSecurity
+  url: security/empirical-security-domain-security.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

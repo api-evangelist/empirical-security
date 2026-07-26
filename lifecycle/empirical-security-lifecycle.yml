@@ -1,0 +1,23 @@
+generated: '2026-07-19'
+method: searched
+source:
+  - https://docs.empiricalsecurity.com/models/epss
+  - https://docs.empiricalsecurity.com/
+versioning:
+  scheme: model-key
+  current: epss_v5
+  models: [global, epss_v3, epss_v4, epss_v5]
+  docs: https://docs.empiricalsecurity.com/models/epss
+  notes: >-
+    Scoring models carry a permanent key. Legacy EPSS versions (v3, v4)
+    remain queryable alongside the current epss_v5 and the Foundation
+    (global) model. Empirical publishes hourly-updated scores versus the
+    daily cadence at first.org.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No formal deprecation/sunset policy was found; legacy model keys are retained.
+sla:
+  url: null
+status_page: null
+deprecated_operations: []
