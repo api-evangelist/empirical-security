@@ -1,0 +1,147 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Empirical Security CVE Groups CVEs API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://empiricalsecurity.fusionauth.io/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CVEs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a CVE by identifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.empiricalsecurity.com/api/cves/:cve_id",
+            "params": [
+              {
+                "name": "cve_id",
+                "value": "",
+                "type": "path",
+                "description": "CVE identifier in the format CVE-YYYY-NNNNN."
+              }
+            ]
+          },
+          "docs": "Retrieve full detail and scores for a single CVE by its identifier."
+        },
+        {
+          "info": {
+            "name": "Retrieve malware hashes for a CVE",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.empiricalsecurity.com/api/cves/:cve_id/malware",
+            "params": [
+              {
+                "name": "cve_id",
+                "value": "",
+                "type": "path",
+                "description": "CVE identifier in the format CVE-YYYY-NNNNN."
+              },
+              {
+                "name": "accept",
+                "value": "",
+                "type": "query",
+                "description": "Set to application/jsonl for JSON Lines output."
+              }
+            ]
+          },
+          "docs": "Retrieve MD5/SHA1/SHA256 malware hashes associated with a CVE."
+        },
+        {
+          "info": {
+            "name": "Retrieve critical indicators for a CVE",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.empiricalsecurity.com/api/cves/:cve_id/critical_indicators",
+            "params": [
+              {
+                "name": "cve_id",
+                "value": "",
+                "type": "path",
+                "description": "CVE identifier in the format CVE-YYYY-NNNNN."
+              }
+            ]
+          },
+          "docs": "Retrieve the scoring model analysis with weighted critical indicators for a CVE."
+        },
+        {
+          "info": {
+            "name": "Retrieve score history for a CVE",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.empiricalsecurity.com/api/cves/:cve_id/score_history",
+            "params": [
+              {
+                "name": "cve_id",
+                "value": "",
+                "type": "path",
+                "description": "CVE identifier in the format CVE-YYYY-NNNNN."
+              },
+              {
+                "name": "scoring_model",
+                "value": "",
+                "type": "query",
+                "description": "Scoring model key."
+              }
+            ]
+          },
+          "docs": "Retrieve historical scores for a CVE for a given scoring model."
+        },
+        {
+          "info": {
+            "name": "Retrieve CVE change history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.empiricalsecurity.com/api/cves/:cve_id/history",
+            "params": [
+              {
+                "name": "cve_id",
+                "value": "",
+                "type": "path",
+                "description": "CVE identifier in the format CVE-YYYY-NNNNN."
+              }
+            ]
+          },
+          "docs": "Retrieve the array of change records (data and diff) for a CVE."
+        },
+        {
+          "info": {
+            "name": "Retrieve all CVEs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.empiricalsecurity.com/api/cves/all"
+          },
+          "docs": "Retrieve the full CVE dataset. Returns a 302 redirect to a gzipped JSONL file, or 202 when the file is being generated."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

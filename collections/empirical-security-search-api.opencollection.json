@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Empirical Security CVE Groups Search API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://empiricalsecurity.fusionauth.io/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search CVEs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.empiricalsecurity.com/api/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Query using Empirical search syntax (e.g. score:>90)."
+              },
+              {
+                "name": "scoring_model",
+                "value": "",
+                "type": "query",
+                "description": "Scoring/model key (e.g. epss_v5, global)."
+              },
+              {
+                "name": "accept",
+                "value": "",
+                "type": "query",
+                "description": "Set to application/jsonl for JSON Lines output."
+              }
+            ]
+          },
+          "docs": "Query CVEs using Empirical search syntax and an optional scoring model."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

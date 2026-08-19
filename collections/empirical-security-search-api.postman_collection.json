@@ -1,0 +1,215 @@
+{
+  "item": [
+    {
+      "id": "8edf5e87-42a8-43a4-baf1-a02294d8a051",
+      "name": "Search",
+      "description": {
+        "content": "Query CVEs using Empirical search syntax.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "71345d0e-d91f-4337-95af-bd9a2725d3a3",
+          "name": "Search CVEs",
+          "request": {
+            "name": "Search CVEs",
+            "description": {
+              "content": "Query CVEs using Empirical search syntax and an optional scoring model.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Query using Empirical search syntax (e.g. score:>90)."
+                },
+                {
+                  "disabled": false,
+                  "key": "scoring_model",
+                  "value": "<string>",
+                  "description": "Scoring/model key (e.g. epss_v5, global)."
+                },
+                {
+                  "disabled": false,
+                  "key": "accept",
+                  "value": "<string>",
+                  "description": "Set to application/jsonl for JSON Lines output."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8449a0ef-3f53-49d0-83df-0fd64ad584b3",
+              "name": "Array of matching CVEs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scoring_model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accept",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"identifier\": \"CVE-2023-49103\",\n    \"description\": \"string\",\n    \"has_exploitation_activity\": false,\n    \"scores\": {\n      \"key_0\": {\n        \"score\": 8681.035831092679,\n        \"percentile\": 709.9281852419704,\n        \"computed_at\": \"1951-06-05T12:04:26.473Z\"\n      },\n      \"key_1\": {\n        \"score\": 2104.5293670210617,\n        \"percentile\": 3682.5450147636275,\n        \"computed_at\": \"1957-03-14T21:22:04.218Z\"\n      },\n      \"key_2\": {\n        \"score\": 3653.8102773851133,\n        \"percentile\": 2764.5291681184012,\n        \"computed_at\": \"1956-04-22T05:40:27.803Z\"\n      },\n      \"key_3\": {\n        \"score\": 4834.733629180942,\n        \"percentile\": 4103.879050319023,\n        \"computed_at\": \"2018-03-02T16:48:34.306Z\"\n      }\n    }\n  },\n  {\n    \"identifier\": \"CVE-2023-49103\",\n    \"description\": \"string\",\n    \"has_exploitation_activity\": true,\n    \"scores\": {\n      \"key_0\": {\n        \"score\": 3839.1244166214433,\n        \"percentile\": 9358.044908815857,\n        \"computed_at\": \"2023-02-04T20:55:22.588Z\"\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f61e2103-117b-4479-a603-28a6ee52f073",
+              "name": "Authentication failed (missing or invalid token).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scoring_model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accept",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.empiricalsecurity.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "target-entity:0c6d5dcc-8bf0-4cd1-bd65-066ef0422369"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://empiricalsecurity.fusionauth.io/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "65e6f14a-7145-43ea-8a9d-6ea6e4aca6fc",
+    "name": "Empirical Security CVE Groups Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Empirical Security API provides programmatic access to real-time exploitation prediction scores for CVEs. It exposes the Foundation (global) model, hourly-updated EPSS models (epss_v3/epss_v4/epss_v5), and organization-specific Radiant models, along with CVE detail, malware-hash, critical-indicator, score-history, change-history, and saved CVE-group endpoints. Authentication is OAuth 2.0 client credentials (JWT bearer).\n\nContact Support:\n Name: Empirical Security",
+      "type": "text/plain"
+    }
+  }
+}

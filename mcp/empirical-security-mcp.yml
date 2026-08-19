@@ -2,38 +2,42 @@ generated: '2026-07-19'
 method: derived
 status: candidate
 source: openapi/empirical-security-openapi.yml
-notes: >-
-  No official hosted/remote MCP server was found for Empirical Security.
-  This is a candidate tool list derived one-to-one from the documented
-  OpenAPI operations, to be validated before publishing.
+notes: No official hosted/remote MCP server was found for Empirical Security. This is a candidate tool
+  list derived one-to-one from the documented OpenAPI operations, to be validated before publishing.
 server:
   name: empirical-security
   transport: http
 tools:
-  - name: get_cve
-    description: Retrieve a CVE by identifier.
-    source_operation: openapi/empirical-security-openapi.yml#getCve
-  - name: get_cve_malware
-    description: Retrieve malware hashes for a CVE.
-    source_operation: openapi/empirical-security-openapi.yml#getCveMalware
-  - name: get_cve_critical_indicators
-    description: Retrieve critical indicators for a CVE.
-    source_operation: openapi/empirical-security-openapi.yml#getCveCriticalIndicators
-  - name: get_cve_score_history
-    description: Retrieve score history for a CVE and scoring model.
-    source_operation: openapi/empirical-security-openapi.yml#getCveScoreHistory
-  - name: get_cve_history
-    description: Retrieve change history for a CVE.
-    source_operation: openapi/empirical-security-openapi.yml#getCveHistory
-  - name: get_all_cves
-    description: Retrieve the full CVE dataset export.
-    source_operation: openapi/empirical-security-openapi.yml#getAllCves
-  - name: search_cves
-    description: Search CVEs with Empirical search syntax.
-    source_operation: openapi/empirical-security-openapi.yml#searchCves
-  - name: list_cve_groups
-    description: List saved CVE groups.
-    source_operation: openapi/empirical-security-openapi.yml#listCveGroups
-  - name: get_cve_group
-    description: Execute a saved CVE group.
-    source_operation: openapi/empirical-security-openapi.yml#getCveGroup
+- name: get_cve
+  description: Retrieve a CVE by identifier.
+  source_operation: openapi/empirical-security-openapi.yml#getCve
+- name: get_cve_malware
+  description: Retrieve malware hashes for a CVE.
+  source_operation: openapi/empirical-security-openapi.yml#getCveMalware
+- name: get_cve_critical_indicators
+  description: Retrieve critical indicators for a CVE.
+  source_operation: openapi/empirical-security-openapi.yml#getCveCriticalIndicators
+- name: get_cve_score_history
+  description: Retrieve score history for a CVE and scoring model.
+  source_operation: openapi/empirical-security-openapi.yml#getCveScoreHistory
+- name: get_cve_history
+  description: Retrieve change history for a CVE.
+  source_operation: openapi/empirical-security-openapi.yml#getCveHistory
+- name: get_all_cves
+  description: Retrieve the full CVE dataset export.
+  source_operation: openapi/empirical-security-openapi.yml#getAllCves
+- name: search_cves
+  description: Search CVEs with Empirical search syntax.
+  source_operation: openapi/empirical-security-openapi.yml#searchCves
+- name: list_cve_groups
+  description: List saved CVE groups.
+  source_operation: openapi/empirical-security-openapi.yml#listCveGroups
+- name: get_cve_group
+  description: Execute a saved CVE group.
+  source_operation: openapi/empirical-security-openapi.yml#getCveGroup
+deployment:
+  mode: none
+  verified: derived
+  tools: 9
+  checked: '2026-08-12'
+  source: catalog MCP census
