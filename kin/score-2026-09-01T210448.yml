@@ -1,38 +1,45 @@
-# Kin Score artifact — empirical-security — 2026-08-04T083143
+# Kin Score artifact — empirical-security — 2026-09-01T210448
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: empirical-security
-  schema_version: 0.9
-  scored_at: '2026-08-04'
-  run_ts: 2026-08-04T083143
-  composite: 31.9
+  schema_version: 0.18.0
+  scored_at: '2026-09-01'
+  run_ts: 2026-09-01T210448
+  composite: 29.4
   band: thin
   facets:
-    discoverability: 92.6
-    contract_quality: 16.3
-    governance: 11.5
+    discoverability: 75.9
+    contract_quality: 14.5
+    governance: 4.5
     operational_transparency: 0.0
-    developer_ergonomics: 51.6
+    developer_ergonomics: 54.2
     commercial_clarity: 34.2
+    contract_governance: 4.5
+    access_clarity: 34.2
   agent_readiness:
-    score: 38.5
+    score: 34.0
     band: agent-ready
     dimensions:
       spec_presence: true
       agentic_access: derived
-      mcp_server: derived
-      auth_clarity: true
-      idempotency: false
+      reversibility_documented: na
+      mcp_server: false
+      auth_clarity: served
+      idempotency: na
       error_semantics: documented
       openapi_examples: false
       rate_limit_signal: false
       event_surface_described: false
       agent_skills: derived
-      well_known_catalog: true
+      well_known_catalog: false
       consent_identity: false
       agent_card: false
-      dry_run_mode: false
+      dry_run_mode: na
+      delegated_identity: served
+      protected_resource_metadata: false
+      dynamic_client_registration: false
+      agentic_commerce: false
   provenance:
     mcp: derived
     skills: derived
