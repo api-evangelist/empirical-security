@@ -92,16 +92,16 @@ apis:
     url: agentic-access/empirical-security-agentic-access.yml
   - type: LLMsTxt
     url: llms/empirical-security-llms.txt
-- aid: empirical-security:empirical-security-cves-api
-  name: Empirical Security CVEs API
-  description: Retrieve CVE detail, scores, malware hashes and history.
+- aid: empirical-security:empirical-security-search-api
+  name: Empirical Security Search API
+  description: Query CVEs using Empirical search syntax.
   humanURL: https://docs.empiricalsecurity.com/
   baseURL: https://app.empiricalsecurity.com/api
   tags:
-  - CVEs
+  - Search
   properties:
   - type: OpenAPI
-    url: openapi/empirical-security-cves-api-openapi.yml
+    url: openapi/empirical-security-search-api-openapi.yml
   - type: Documentation
     url: https://docs.empiricalsecurity.com/
   - type: APIReference
@@ -124,16 +124,16 @@ apis:
     url: agentic-access/empirical-security-agentic-access.yml
   - type: LLMsTxt
     url: llms/empirical-security-llms.txt
-- aid: empirical-security:empirical-security-search-api
-  name: Empirical Security Search API
-  description: Query CVEs using Empirical search syntax.
+- aid: empirical-security:empirical-security-cves-api
+  name: Empirical Security CV Es API
+  description: Retrieve CVE detail, scores, malware hashes and history.
   humanURL: https://docs.empiricalsecurity.com/
   baseURL: https://app.empiricalsecurity.com/api
   tags:
-  - Search
+  - CVEs
   properties:
   - type: OpenAPI
-    url: openapi/empirical-security-search-api-openapi.yml
+    url: openapi/empirical-security-cves-api-openapi.yml
   - type: Documentation
     url: https://docs.empiricalsecurity.com/
   - type: APIReference
