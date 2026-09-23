@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Empirical Security CVE Groups CVEs API
+  title: Empirical Security CV Es API
   version: '1.0'
   description: The Empirical Security API provides programmatic access to real-time exploitation prediction scores for CVEs. It exposes the Foundation (global) model, hourly-updated EPSS models (epss_v3/epss_v4/epss_v5), and organization-specific Radiant models, along with CVE detail, malware-hash, critical-indicator, score-history, change-history, and saved CVE-group endpoints. Authentication is OAuth 2.0 client credentials (JWT bearer).
   contact:
@@ -158,26 +158,39 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed (missing or invalid token).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ServerError:
-      description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: String identifier for the error type.
+            message:
+              type: string
+              description: Human-readable description of the error.
+    ScoreHistory:
+      type: object
+      properties:
+        identifier:
+          type: string
+        scores:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/Score'
+    MalwareHash:
+      type: object
+      properties:
+        md5:
+          type: string
+        sha1:
+          type: string
+        sha256:
+          type: string
     Cve:
       type: object
       properties:
@@ -200,26 +213,6 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/Score'
-    MalwareHash:
-      type: object
-      properties:
-        md5:
-          type: string
-        sha1:
-          type: string
-        sha256:
-          type: string
-    ScoreHistory:
-      type: object
-      properties:
-        identifier:
-          type: string
-        scores:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/Score'
     Score:
       type: object
       properties:
@@ -230,18 +223,25 @@ components:
         computed_at:
           type: string
           format: date-time
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: String identifier for the error type.
-            message:
-              type: string
-              description: Human-readable description of the error.
+  responses:
+    ServerError:
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication failed (missing or invalid token).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     CveId:
       name: cve_id
