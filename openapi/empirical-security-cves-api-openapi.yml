@@ -159,6 +159,27 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    ScoreHistory:
+      type: object
+      properties:
+        identifier:
+          type: string
+        scores:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/Score'
+    Score:
+      type: object
+      properties:
+        score:
+          type: number
+        percentile:
+          type: number
+        computed_at:
+          type: string
+          format: date-time
     Cve:
       type: object
       properties:
@@ -181,6 +202,15 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/Score'
+    MalwareHash:
+      type: object
+      properties:
+        md5:
+          type: string
+        sha1:
+          type: string
+        sha256:
+          type: string
     Error:
       type: object
       properties:
@@ -193,37 +223,13 @@ components:
             message:
               type: string
               description: Human-readable description of the error.
-    MalwareHash:
-      type: object
-      properties:
-        md5:
-          type: string
-        sha1:
-          type: string
-        sha256:
-          type: string
-    ScoreHistory:
-      type: object
-      properties:
-        identifier:
-          type: string
-        scores:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/Score'
-    Score:
-      type: object
-      properties:
-        score:
-          type: number
-        percentile:
-          type: number
-        computed_at:
-          type: string
-          format: date-time
   responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Authentication failed (missing or invalid token).
       content:
@@ -232,12 +238,6 @@ components:
             $ref: '#/components/schemas/Error'
     ServerError:
       description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found.
       content:
         application/json:
           schema:
