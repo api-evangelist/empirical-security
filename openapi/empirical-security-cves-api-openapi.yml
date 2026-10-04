@@ -159,17 +159,15 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    ScoreHistory:
+    MalwareHash:
       type: object
       properties:
-        identifier:
+        md5:
           type: string
-        scores:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/Score'
+        sha1:
+          type: string
+        sha256:
+          type: string
     Score:
       type: object
       properties:
@@ -202,15 +200,17 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/Score'
-    MalwareHash:
+    ScoreHistory:
       type: object
       properties:
-        md5:
+        identifier:
           type: string
-        sha1:
-          type: string
-        sha256:
-          type: string
+        scores:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/Score'
     Error:
       type: object
       properties:
@@ -230,14 +230,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed (missing or invalid token).
+    ServerError:
+      description: Internal server error.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    ServerError:
-      description: Internal server error.
+    Unauthorized:
+      description: Authentication failed (missing or invalid token).
       content:
         application/json:
           schema:
